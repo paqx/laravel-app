@@ -6,6 +6,7 @@ use App\Models\Company;
 use Illuminate\Http\Request;
 use DataTables;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Http;
 
 class CompanyController extends Controller
 {
@@ -85,7 +86,38 @@ class CompanyController extends Controller
      */
     public function show(Company $company)
     {
-		return view('companies.show')->with('company', $company);
+		$yaMapsApiKey = env('YA_MAPS_API_KEY');
+		$url = 'https://geocode-maps.yandex.ru/1.x';
+		$query = [
+			'geocode' => '$company->address',
+			'apikey' => $yaMapsApiKey,
+			'format' => 'json',
+			'results' => 1
+		];
+				
+		$response = Http::withOptions([
+			'verify' => false,
+		])->get($url, $query);
+		$responseBody = json_decode($response->body());
+
+		if (isset($responseBody->error)) {
+			return view('companies.show')
+			->with('company', $company)
+			->withErrors(['msg' => $responseBody->message]);
+		}
+		
+		$latLng = $responseBody
+				->metaDataProperty
+				->GeocoderResponseMetaData
+				->Point
+				->pos;
+		list($latitude, $longitude) = explode(' ', $latLng);
+
+		return view('companies.show')
+			->with('company', $company)
+			->with('yaMapsApiKey', $yaMapsApiKey)
+			->with('latitude', $latitude)
+			->with('longitude', $longitude);
     }
 
     /**

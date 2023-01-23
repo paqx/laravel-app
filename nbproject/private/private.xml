@@ -2,17 +2,6 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-        <group>
-            <file>file:/home/dmitrii/Vagrant/ubuntu-jammy64/laravel-app/resources/views/auth/login.blade.php</file>
-            <file>file:/home/dmitrii/Vagrant/ubuntu-jammy64/laravel-app/database/seeders/UserSeeder.php</file>
-            <file>file:/home/dmitrii/Vagrant/ubuntu-jammy64/laravel-app/database/seeders/DatabaseSeeder.php</file>
-            <file>file:/home/dmitrii/Vagrant/ubuntu-jammy64/laravel-app/app/Http/Controllers/HomeController.php</file>
-            <file>file:/home/dmitrii/Vagrant/ubuntu-jammy64/laravel-app/app/Http/Controllers/Auth/LoginController.php</file>
-            <file>file:/home/dmitrii/Vagrant/ubuntu-jammy64/laravel-app/routes/web.php</file>
-            <file>file:/home/dmitrii/Vagrant/ubuntu-jammy64/laravel-app/resources/views/home.blade.php</file>
-            <file>file:/home/dmitrii/Vagrant/ubuntu-jammy64/laravel-app/.gitignore</file>
-            <file>file:/home/dmitrii/Vagrant/ubuntu-jammy64/laravel-app/resources/views/layouts/main.blade.php</file>
-            <file>file:/home/dmitrii/Vagrant/ubuntu-jammy64/laravel-app/resources/views/employees/edit.blade.php</file>
-        </group>
+        <group/>
     </open-files>
 </project-private>

@@ -36,19 +36,32 @@
 </table>
 
 <h3>Карта</h3>
+@if ($errors->any())
+<div class="alert alert-danger">
+	<p>Failed to load the map. Yandex geocoding service provided the following response:</p>
+	<ul>
+		@foreach ($errors->all() as $error)
+		<li>{{ $error }}</li>
+		@endforeach
+	</ul>
+</div>
+@else
 <div id="map" style="width: 600px; height: 400px"></div>
+@endif
 
 @endsection
 
 @push('scripts')
-<script src="https://api-maps.yandex.ru/2.1/?apikey=ваш API-ключ&lang=ru_RU" type="text/javascript"></script>
+@if (isset($latitude) && isset($longitude))
+<script src="https://api-maps.yandex.ru/2.1/?apikey={{ $yaMapsApiKey }}&lang=ru_RU" type="text/javascript"></script>
 <script type="text/javascript">
         ymaps.ready(init);
         function init(){
             var myMap = new ymaps.Map("map", {
-                center: [55.76, 37.64],
-                zoom: 7
+                center: [{{ $latitude }}, {{ $longitude }}],
+                zoom: 12
             });
         }
 </script>
+@endif
 @endpush
